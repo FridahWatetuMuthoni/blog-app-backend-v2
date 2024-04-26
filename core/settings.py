@@ -25,7 +25,7 @@ DEBUG = env.bool("DEBUG", default=False)
 
 
 ALLOWED_HOSTS = [
-   'https://blog-app-backend-8l7p.onrender.com/'
+   'blog-app-backend-8l7p.onrender.com'
 ]
 
 
