@@ -24,7 +24,9 @@ DEBUG = env.bool("DEBUG", default=False)
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+   'https://blog-app-backend-8l7p.onrender.com/'
+]
 
 
 # Application definition
