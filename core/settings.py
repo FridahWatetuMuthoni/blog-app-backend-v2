@@ -28,6 +28,7 @@ ALLOWED_HOSTS = [
    'blog-app-backend-8l7p.onrender.com',
    'localhost',
    '127.0.0.1',
+   'blog-app-frontend-fridah.netlify.app'
 ]
 
 
@@ -153,11 +154,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #######################################--CUSTOM SETTINGS--#############################################
 
-#static files settings
-
-STATIC_ROOT = os.path.join(BASE_DIR / "staticfiles" )# new
-STATICFILES_STORAGE ="whitenoise.storage.CompressedManifestStaticFilesStorage" # new
-
 #user models settings
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
@@ -174,6 +170,14 @@ SITE_ID = 3
 MEDIA_URL = "/images/"
 MEDIA_ROOT = os.path.join(BASE_DIR / 'images')
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = os.path.join(BASE_DIR / "staticfiles" )# new
+STORAGES = {
+    "staticfiles":{
+        'BACKEND':"whitenoise.storage.CompressedManifestStaticFilesStorage"
+    }
+}
+STATICFILES_STORAGE ="whitenoise.storage.CompressedManifestStaticFilesStorage" # new
 
 # cors settings
 
