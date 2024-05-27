@@ -34,7 +34,7 @@ class Post(models.Model):
     content = models.TextField()
     slug = models.SlugField(max_length=250, unique_for_date='published', blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_posts',default=get_first_user)
-    image = models.ImageField(upload_to='images/', default='default.jpg')
+    image = models.ImageField(upload_to='images/', blank=False , null=False)
     published = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=10, choices=OPTIONS, default='published')
     objects = models.Manager() #default manager
