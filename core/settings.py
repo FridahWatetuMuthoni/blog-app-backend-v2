@@ -167,13 +167,15 @@ SITE_ID = 3
 
 # statics files and images
 
-MEDIA_URL=os.path.join('/media/')
-MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+MEDIA_URL='/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+STATIC_ROOT = BASE_DIR, "static/"
 STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = os.path.join(BASE_DIR / "staticfiles" )# new
+STATIC_ROOT = BASE_DIR / "staticfiles" # new
 
 STATICFILES_STORAGE ="whitenoise.storage.CompressedManifestStaticFilesStorage" # new
+WHITENOISE_USE_FINDERS = True
+
 
 # cors settings
 
