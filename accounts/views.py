@@ -10,6 +10,7 @@ from .serializers import UserSerializer
 from django.contrib.auth import get_user_model
 from django.http import Http404
 from rest_framework.permissions import IsAuthenticated
+from .adapters import MySocialAccountAdapter
 
 
 # Create your views here.
@@ -21,8 +22,22 @@ class FacebookLogin(SocialLoginView):
     adapter_class = FacebookOAuth2Adapter
 
 
+# class GoogleLogin(SocialLoginView):
+#     adapter_class = GoogleOAuth2Adapter
+
 class GoogleLogin(SocialLoginView):
     adapter_class = GoogleOAuth2Adapter
+    adapter = MySocialAccountAdapter()
+
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+        print(response)
+        tokens = self.adapter.save_user(request, self.adapter.get_sociallogin(request))
+        print(tokens)
+        if tokens:
+            return Response(tokens, status=status.HTTP_200_OK)
+        return response
+
 
 
 class BlackListRefreshTokenView(APIView):
